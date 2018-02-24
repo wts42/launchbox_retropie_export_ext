@@ -6,53 +6,40 @@ from shutil import copy
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
-#The path to your Launchbox folder.
+# Change the path to your launchbox folder.
 lb_dir = r'X:\A3_Games\00_Resources\00_Launchbox\LaunchBox'
 
-#Where to put the exported roms, images and xmls
-#Copy the gamelists to /opt/retropie/configs/all/emulationstation/gamelists
-#Copy the roms and images to /home/<user>/RetroPie/roms
+# Script output directory. (for Roms, images and xml files)
+# Copy the gamelists to ~/.emulationstation/gamelists/
+# Copy the roms and images to ~/RetroPie/roms/
 output_dir = r'X:\output'
 
-#Restrict export to only Launchbox Favorites
+# Restrict export to only Launchbox favorites.
 favorites_only=False
-#Hide games which are listed as broken in launchbox.
+# Hide games which are listed as broken in Launchbox.
 game_broken=True
-#Hide games which are listed as hidden in launchbox.
+# Hide games which are listed as hidden in Launchbox.
 game_hide=True
 	
-#Choose platforms (comment/uncomment as needed)
-#The first string in each pair is the Launchbox platform filename, the second is the RetroPie folder name
+# Choose platforms (comment/uncomment as needed).
+# The first string in each pair is the Launchbox platform filename, the second is the RetroPie folder name.
+# Arcade is disabled in this example.
 platforms = dict()
 #platforms["Arcade"] = "arcade"
 platforms["Nintendo 64"] = "n64"
-#platforms["Nintendo Entertainment System"] = "nes"
-#platforms["Nintendo Game Boy Advance"] = "gba"
-#platforms["Nintendo Game Boy Color"] = "gbc"
-#platforms["Nintendo Game Boy"] = "gb"
-#platforms["Sega 32X"] = "sega32x"
-#platforms["Sega Game Gear"] = "gamegear"
-#platforms["Sega Genesis"] = "geneseis"
-#platforms["Sega Master System"] = "mastersystem"
-#platforms["Sony Playstation"] = "psx"
-#platforms["Super Nintendo Entertainment System"] = "snes"
+platforms["Nintendo Entertainment System"] = "nes"
+platforms["Nintendo Game Boy Advance"] = "gba"
+platforms["Nintendo Game Boy Color"] = "gbc"
+platforms["Nintendo Game Boy"] = "gb"
+platforms["Sega 32X"] = "sega32x"
+platforms["Sega Game Gear"] = "gamegear"
+platforms["Sega Genesis"] = "genesis"
+platforms["Sega Master System"] = "mastersystem"
+platforms["Sony Playstation"] = "psx"
+platforms["Super Nintendo Entertainment System"] = "snes"
 
-playercount = dict()
-playercount["2-Player Alternating"] = "2"
-playercount["2-Player Simultaneous"] = "2"
-playercount["3-Player Simultaneous"] = "3"
-playercount["4-Player Alternating / 2-Player Simultaneous"] = "4"
-playercount["4-Player Alternating"] = "4"
-playercount["4-Player Simultaneous"] = "4"
-playercount["6-Player Simultaneous"] = "6"
-playercount["8-Player Alternating / 2-Player Simultaneous"] = "8"
-playercount["8-Player Simultaneous"] = "8"
-playercount["Cooperative; Multiplayer"] = "1+"
-playercount["Kooperativ; Multiplayer"] = "1+"
-playercount["Multiplayer"] = "1+"
-playercount["Single Player"] = "1"
-
-# Comment/uncomment to change kids rating
+# Comment/uncomment to change content rating for kids.
+# M - Mature, Not Rated and RP - Rating Pending disabled. The last two to be on the safe side.
 kidrating = dict()
 kidrating["E - Everyone"] = "true"
 kidrating["EC - Early Childhood"] = "true"
@@ -62,7 +49,8 @@ kidrating["T - Teen"] = "true"
 #kidrating["Not Rated"] = "true"
 #kidrating["RP - Rating Pending"] = "true"
 
-# Comment/uncomment to hide specific regions
+# Comment/uncomment to hide specific regions.
+# Australia, Europe, Japan, Europe, Germany, etc. enabled in this example.
 hideregion = dict()
 hideregion["Asia"] = "true"
 #hideregion["Australia"] = "true"
@@ -85,8 +73,22 @@ hideregion["The Netherlands"] = "true"
 #hideregion["United Kingdom"] = "true"
 #hideregion["World"] = "true"
 
-
 ###edits should not be required below here###
+playercount = dict()
+playercount["2-Player Alternating"] = "2"
+playercount["2-Player Simultaneous"] = "2"
+playercount["3-Player Simultaneous"] = "3"
+playercount["4-Player Alternating / 2-Player Simultaneous"] = "4"
+playercount["4-Player Alternating"] = "4"
+playercount["4-Player Simultaneous"] = "4"
+playercount["6-Player Simultaneous"] = "6"
+playercount["8-Player Alternating / 2-Player Simultaneous"] = "8"
+playercount["8-Player Simultaneous"] = "8"
+playercount["Cooperative; Multiplayer"] = "1+"
+playercount["Kooperativ; Multiplayer"] = "1+"
+playercount["Multiplayer"] = "1+"
+playercount["Single Player"] = "1"
+
 for platform in platforms.keys():
     platform_lb=platform
     platform_rp=platforms[platform]
