@@ -6,6 +6,7 @@ Based on [launchbox-retropie-export](https://forums.launchbox-app.com/files/file
 
 This extended version helps when using [Child-friendly-EmulationStation](https://github.com/RetroPie/RetroPie-Setup/wiki/Child-friendly-EmulationStation) as it parses the age ratings from the Launchbox database.
 
+> Original installation instructions from [launchbox-retropie-export](https://forums.launchbox-app.com/files/file/860-launchbox-retropie-export/)
 >### How to Install:
 >1. Download and install Python
 >2. Choose All Users and add it to your Path
